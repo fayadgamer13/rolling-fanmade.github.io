@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Rolling Fanmade</title>
+        <link rel="icon" type="image/png" href="favicon/favicon-96x96.png" sizes="96x96" />
+<link rel="icon" type="image/svg+xml" href="favicon/favicon.svg" />
+<link rel="shortcut icon" href="favicon/favicon.ico" />
+<link rel="apple-touch-icon" sizes="180x180" href="favicon/apple-touch-icon.png" />
+<meta name="apple-mobile-web-app-title" content="RS Fanmade" />
+<link rel="manifest" href="favicon/site.webmanifest" />
+        <style>
+            /* 1. GLOBAL & FONTS */
+            @font-face {
+                font-family: 'MyCustomFont';
+                src: url('Sen-Bold.otf') format('opentype');
+                font-weight: normal;
+                font-style: normal;
+            }
+
+            body {
+                font-family: 'MyCustomFont', Arial, sans-serif;
+                text-align: center;
+                margin-top: 50px;
+                color: white;
+                background-image: url('background.png');
+                background-size: cover;
+                background-repeat: no-repeat;
+                background-attachment: fixed; /* Keeps background anchored nicely */
+            }
+
+            /* 2. IMAGE CONTENT */
+            .center-container {
+                text-align: center;
+                margin-bottom: 25px; /* Adds space under the icon image */
+            }
+
+            .center-container img {
+                object-fit: cover; 
+                border-radius: 20%;
+            }
+
+            /* NEW: CAROUSEL / SCREENSHOT PREVIEW STYLES */
+            .screenshot-carousel {
+                position: relative;
+                width: 10%;             /* Responsive width */
+                margin: 20px auto 30px auto; /* Centers the whole container on screen */
+            }
+
+            .screenshot-carousel img {
+                width: 100%;
+                height: 100%;
+                object-fit: cover;
+                border-radius: 16px;   /* Smooth rounded edges */
+                box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+            }
+
+            .next-arrow-btn {
+                position: absolute;
+                right: 12px;           /* Floats on the right side of the image */
+                top: 50%;
+                transform: translateY(-50%); /* Centers vertically */
+                background-color: rgba(255, 255, 255, 0.25);
+                color: #ffffff;
+                border: none;
+                border-radius: 50%;    /* Perfect circle */
+                width: 40px;
+                height: 40px;
+                font-size: 24px;
+                cursor: pointer;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                backdrop-filter: blur(4px); /* Modern glassmorphism effect */
+                transition: background-color 0.2s, transform 0.2s;
+            }
+
+            .next-arrow-btn:hover {
+                background-color: rgba(255, 255, 255, 0.45);
+                transform: translateY(-50%) scale(1.05);
+            }
+
+            .next-arrow-btn:active {
+                transform: translateY(-50%) scale(0.95);
+            }
+
+            /* 3. BUTTON CONTAINER & FIXES */
+            .button-wrapper {
+                display: flex;
+                flex-direction: column; /* Stacks buttons on top of each other */
+                align-items: center;    /* Centers them horizontally on the page */
+                gap: 16px;              /* Creates an even gap between the buttons */
+                margin-top: 20px;
+            }
+
+            /* Target the actual buttons instead of the wrapper div */
+            .button-styler {
+                background-color: #373737;
+                color: #ffffff;
+                padding: 14px 32px;      /* Generous padding for clean tap target */
+                font-size: 16px;
+                font-family: 'MyCustomFont', Arial, sans-serif; /* Inherit your custom font */
+                border: none;
+                border-radius: 12px;     /* Smooth rounded style matching your screenshot */
+                cursor: pointer;
+                box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+                transition: transform 0.2s ease, background-color 0.3s ease;
+                
+                /* The critical fix to prevent stretching */
+                width: 250px;            /* Forces both buttons to be exactly the same clean width */
+            }
+
+            /* Hover & Click Animation Effects */
+            .button-styler:hover {
+                background-color: #eeeeee; 
+                transform: translateY(-2px); 
+                color: black; 
+            }
+
+            .button-styler:hover img {
+                filter: brightness(0); 
+            }
+
+            .button-styler:active {
+                transform: translateY(1px);
+            }
+        </style>
+    </head>
+    <body>
+
+           <audio id="bgMusic" autoplay loop muted>
+            <source src="music5.mp3" type="audio/mpeg">
+        </audio>
+
+        <img src="logo.png" alt="Rolling Fanmade Logo" width="200">
+        <h1>Rolling Fanmade</h1>
+        <p>But Rolling Sky's First Version.....</p>
+        <p style="font-size: 14px; color: #cccccc;">Version: 1.0.3</p>
+        
+        <div class="center-container">
+            <img src="icon.png" alt="Rolling Fanmade" width="100">
+        </div>
+
+        <!-- NEW: Centered, Rounded Screenshot Preview with Next Button -->
+        <h1>Game Screenshot</h1>
+        <div class="screenshot-carousel">
+            <img id="previewImage" src="Banner/1.png" alt="Game Level Preview">
+            <button id="nextImageButton" class="next-arrow-btn" aria-label="Next Level">›</button>
+        </div>
+
+        <!-- Single clean wrapper container to handle alignment -->
+        <h1>Download & Play Options</h1>
+        <hr>
+        <h1>Downloads<img src="download_icon.png" alt="Download Icon" width="30"></h1>
+        <div class="button-wrapper">
+            
+            <button id="downloadButton" class="button-styler">Download for Windows
+                <img src="windows_icon.png" alt="Windows Icon" width="20">
+            </button>
+            
+            <button id="androidButton" class="button-styler">Download for Android
+                <img src="android_icon.png" alt="Android Icon" width="20">
+            </button>
+
+            <h1>Play in Browser<img src="browser_icon.png" alt="Browser Icon" width="30"></h1>
+
+            <button id="openButton" class="button-styler">Play Here 
+            </button>
+        
+        </div>
+
+        <h2>🛠️ Fixes, New & Changes in 1.0.3</h2>
+    <ul>
+        <li><strong>Fixed Lunar Night's Route:</strong> Changed its route due to the laser cannon hitting the ball.</li>
+        <li><strong>Updated Play Button:</strong> Updated to the current Rolling Sky play button.</li>
+        <li><strong>New Release:</strong> Rolling Fanmade is now officially available on Android!</li>
+    </ul>
+
+        <script>
+
+                        // BACKGROUND MUSIC CONTROLLER (Bypasses Browser Restrictions)
+            const music = document.getElementById('bgMusic');
+            
+            // Set the baseline volume directly to 80%
+            music.volume = 0.2;
+
+            function unlockAudio() {
+                music.muted = false;
+                music.play()
+                    .then(() => {
+                        // Clean up interaction triggers once playback successfully begins
+                        window.removeEventListener('scroll', unlockAudio);
+                        window.removeEventListener('click', unlockAudio);
+                        window.removeEventListener('touchstart', unlockAudio);
+                    })
+                    .catch(err => console.log("Audio waiting for explicit navigation interaction...", err));
+            }
+
+            // Track movement triggers across the body canvas area
+            window.addEventListener('scroll', unlockAudio);
+            window.addEventListener('click', unlockAudio);
+            window.addEventListener('touchstart', unlockAudio);
+
+            // NEW: Array of your gameplay screenshots to cycle through
+            const screenshots = ["Banner/1.png", "Banner/2.png", "Banner/3.png", "Banner/4.png", "Banner/5.png", "Banner/6.png"];
+            let currentIndex = 0;
+
+            document.getElementById("nextImageButton").addEventListener("click", function() {
+                currentIndex = (currentIndex + 1) % screenshots.length;
+                document.getElementById("previewImage").src = screenshots[currentIndex];
+            });
+
+            // EXISTING: Button navigation links
+            document.getElementById("downloadButton").addEventListener("click", function() {
+                window.location.href = "https://github.com/9935355Developer/rolling-fanmade.github.io/releases/download/1.0.3/Rolling-Fanmade-1-0-3_Windows.exe"; 
+            });
+
+            document.getElementById("openButton").addEventListener("click", function() {
+                window.location.href = "https://9935355developer.github.io/rolling-fanmade.github.io/WebGL/index.html"; 
+            });
+
+            document.getElementById("androidButton").addEventListener("click", function() {
+                window.location.href = "https://github.com/9935355Developer/rolling-fanmade.github.io/releases/download/1.0.3/Rolling-Fanmade-1-0-3_Android.apk";
+            });
+
+            document.getElementById("macButton").addEventListener("click", function() {
+                window.location.href = "https://github.com/9935355Developer/rolling-fanmade.github.io/releases/download/1.0.3/Rolling-Fanmade-1-0-3_MacOS.zip"; 
+            });
+
+            document.getElementById("linuxButton").addEventListener("click", function() {
+                window.location.href = "https://github.com/9935355Developer/rolling-fanmade.github.io/releases/download/1.0.3/Rolling-Fanmade-1-0-3_Linux.zip"; 
+            });
+        </script>
+    </body>
+</html>
